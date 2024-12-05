@@ -4,93 +4,178 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - Irving</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;700&display=swap" rel="stylesheet">
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            padding: 20px;
+            font-family: 'Nunito Sans', sans-serif;
+            background-color: #f7f7f7;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+        }
+        header {
+            background: #50b3a2;
+            color: #fff;
+            padding-top: 30px;
+            min-height: 70px;
+            border-bottom: #e8491d 3px solid;
+        }
+        header a {
+            color: #fff;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 16px;
+        }
+        header ul {
+            padding: 0;
+            list-style: none;
+        }
+        header li {
+            display: inline;
+            padding: 0 20px;
+        }
+        header #branding {
+            float: left;
+        }
+        header #branding h1 {
+            margin: 0;
+        }
+        header #branding img {
+            width: 50px;
+            height: auto;
+            margin-left: 10px;
+            vertical-align: middle;
+        }
+        header nav {
+            float: right;
+            margin-top: 10px;
+        }
+        header .highlight, header .current a {
+            color: #e8491d;
+            font-weight: bold;
+        }
+        header a:hover {
+            color: #ffffff;
+            font-weight: bold;
+        }
+        .content {
+            padding: 40px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+            width: 80%;
+            max-width: 400px;
+            margin-left: auto;
+            margin-right: auto;
             text-align: center;
         }
-        form {
-            background: white;
-            padding: 20px;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            display: inline-block;
+        footer {
+            background: #333;
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+            margin-top: auto;
+            width: 100%;
+        }
+        footer p {
+            font-size: 14px;
+        }
+        .gwc-icon {
+            width: 50px;
+            height: auto;
+            margin-left: 10px;
+            cursor: pointer;
+        }
+        .gwc-icon:hover {
+            opacity: 0.8;
         }
         input[type="text"], input[type="password"] {
-            width: 100%;
-            padding: 10px;
+            width: calc(100% - 20px);
+            padding: 15px;
             margin: 10px 0;
             border: 1px solid #ccc;
-            border-radius: 5px;
+            border-radius: 4px;
+            box-sizing: border-box;
         }
         button {
-            padding: 10px 15px;
-            background-color: #5cb85c;
+            padding: 15px 20px;
+            background-color: #50b3a2;
             color: white;
             border: none;
-            border-radius: 5px;
+            border-radius: 4px;
             cursor: pointer;
-            margin: 5px;
+            margin: 10px 0;
+            transition: background-color 0.3s ease;
         }
         button:hover {
-            background-color: #4cae4c;
-        }
-        footer {
-            margin-top: 20px;
-            font-size: 12px;
-            color: #777;
+            background-color: #45a29e;
         }
     </style>
 </head>
 <body>
 
-    <h1>Login</h1>
+    <header>
+        <div class="container">
+            <div id="branding">
+                <h1><span class="highlight">Improve</span> IT
+                    <img src="IT.png" alt="IT Icon"> <!-- IT icon image -->
+                </h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li class="current"><a href="about.html">About</a></li>
+                    <li><a href="courseware.html">Courseware</a></li> 
+                    <li><a href="showcase.html">Showcase</a></li> 
+                    <li><img src="gwc.jpg" alt="GWC" class="gwc-icon" onclick="goToRegisterPage()"></li> <!-- GWC icon with onclick event -->
+                </ul>
+            </nav>
+        </div>
+    </header>
 
-    <form id="loginForm">
-        <label for="username">Username:</label>
-        <input type="text" id="username" placeholder="Enter username" required>
+    <div class="content">
+        <h1>Login</h1>
 
-        <label for="password">Password:</label>
-        <input type="password" id="password" placeholder="Enter password" required>
+        <form id="loginForm">
+            <label for="username">Username:</label>
+            <input type="text" id="username" placeholder="Enter username" required>
 
-        <button type="submit">Login</button>
-    </form>
+            <label for="password">Password:</label>
+            <input type="password" id="password" placeholder="Enter password" required>
+
+            <button type="submit">Login</button>
+        </form>
+    </div>
 
     <footer>
         <p>copyright©Improve IT</p>
         <p>Contact Number: +61 1111111111</p>
         <p>feedback email: 123456789@qq.com</p>
+        <p>Irving</p>
     </footer>
 
     <script>
-        // Function to retrieve the value of a specific cookie
-        function getCookie(name) {
-            var nameEQ = name + "=";
-            var ca = document.cookie.split(';');
-            for(var i = 0; i < ca.length; i++) {
-                var c = ca[i];
-                while (c.charAt(0) === ' ') c = c.substring(1, c.length);
-                if (c.indexOf(nameEQ) === 0) return decodeURIComponent(c.substring(nameEQ.length, c.length));
-            }
-            return null;
+        function goToRegisterPage() {
+            window.location.href = 'register.html';
         }
 
-        // Event handler for the form submission
         document.getElementById("loginForm").onsubmit = function(event) {
-            event.preventDefault(); // Prevent the form from submitting normally
+            event.preventDefault();
             var username = document.getElementById("username").value;
             var password = document.getElementById("password").value;
-
-            // Retrieve the stored username and password from cookies
             var storedUsername = getCookie('username');
             var storedPassword = getCookie('password');
-
-            // Check if the entered credentials match the stored cookies
             if (username === storedUsername && password === storedPassword) {
                 alert("Login successful!");
-                // Redirect to gwc.html upon successful login
                 window.location.href = 'gwc.html';
             } else {
                 alert("Login failed. Please check your username and password.");
