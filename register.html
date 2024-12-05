@@ -4,99 +4,182 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Create Account - Irving</title>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            padding: 20px;
-            text-align: center;
+            font-family: 'Open Sans', sans-serif;
+            background-color: #f7f7f7;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
         }
-        form {
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+        }
+        header {
+            background: #50b3a2;
+            color: #fff;
+            padding-top: 30px;
+            min-height: 70px;
+            border-bottom: #e8491d 3px solid;
+        }
+        header a {
+            color: #fff;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 16px;
+        }
+        header ul {
+            padding: 0;
+            list-style: none;
+        }
+        header li {
+            display: inline;
+            padding: 0 20px;
+        }
+        header #branding {
+            float: left;
+        }
+        header #branding h1 {
+            margin: 0;
+        }
+        header #branding img {
+            width: 50px;
+            height: auto;
+            margin-left: 10px;
+            vertical-align: middle;
+        }
+        header nav {
+            float: right;
+            margin-top: 10px;
+        }
+        header .highlight, header .current a {
+            color: #e8491d;
+            font-weight: bold;
+        }
+        header a:hover {
+            color: #ffffff;
+            font-weight: bold;
+        }
+        .content {
+            padding: 40px;
             background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        footer {
+            background: #333;
+            color: #fff;
+            text-align: center;
             padding: 20px;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            display: inline-block;
+            margin-top: auto;
+            width: 100%;
+        }
+        footer p {
+            font-size: 14px;
+        }
+        .gwc-icon {
+            width: 50px;
+            height: auto;
+            margin-left: 10px;
+            cursor: pointer;
+        }
+        .gwc-icon:hover {
+            opacity: 0.8;
         }
         input[type="text"], input[type="password"] {
-            width: 100%;
-            padding: 10px;
+            width: calc(100% - 20px);
+            padding: 15px;
             margin: 10px 0;
             border: 1px solid #ccc;
-            border-radius: 5px;
+            border-radius: 4px;
+            box-sizing: border-box; /* Include padding in the element's total width and height */
         }
         button {
-            padding: 10px 15px;
+            padding: 15px 20px;
             background-color: #5cb85c;
             color: white;
             border: none;
-            border-radius: 5px;
+            border-radius: 4px;
             cursor: pointer;
-            margin: 5px;
+            margin: 10px 0;
+            transition: background-color 0.3s ease;
         }
         button:hover {
             background-color: #4cae4c;
-        }
-        footer {
-            margin-top: 20px;
-            font-size: 12px;
-            color: #777;
         }
     </style>
 </head>
 <body>
 
-    <h1>Create Account</h1>
-    <h2>I am Irving</h2>
+    <header>
+        <div class="container">
+            <div id="branding">
+                <h1><span class="highlight">Improve</span> IT
+                    <img src="IT.png" alt="IT Icon"> <!-- IT icon image -->
+                </h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li class="current"><a href="about.html">About</a></li>
+                    <li><a href="courseware.html">Courseware</a></li> 
+                    <li><a href="showcase.html">Showcase</a></li> 
+                    <li><img src="gwc.jpg" alt="GWC" class="gwc-icon" onclick="goToRegisterPage()"></li> <!-- GWC icon with onclick event -->
+                </ul>
+            </nav>
+        </div>
+    </header>
 
-    <!-- Add a button to navigate to the Login page -->
-    <button onclick="goToLoginPage()">Go to Login Page</button>
+    <div class="content">
+        <h1>Create Account</h1>
+        <h2>I am Irving</h2>
 
-    <form id="registerForm">
-        <label for="username">Username:</label>
-        <input type="text" id="username" placeholder="Enter username" required>
+        <!-- Add a button to navigate to the Login page -->
+        <button onclick="goToLoginPage()">Go to Login Page</button>
 
-        <label for="password">Password:</label>
-        <input type="password" id="password" placeholder="Enter password" required>
+        <form id="registerForm">
+            <label for="username">Username:</label>
+            <input type="text" id="username" placeholder="Enter username" required>
 
-        <button type="submit">Create Account</button>
-    </form>
+            <label for="password">Password:</label>
+            <input type="password" id="password" placeholder="Enter password" required>
+
+            <button type="submit">Create Account</button>
+        </form>
+    </div>
 
     <footer>
         <p>copyright©Improve IT</p>
-        <p>Contact Number: +61 1111111111</p>
-        <p>feedback email: 123456789@qq.com</p>
+        <p>+61 1111111111</p>
+        <p>feedback email 123456789@qq.com</p>
+        <p>Irving</p>
     </footer>
 
     <script>
-        // Function to set a cookie with a specified name, value, and expiration days
-        function setCookie(name, value, days) {
-            var expires = "";
-            if (days) {
-                var date = new Date();
-                date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
-                expires = "; expires=" + date.toUTCString();
-            }
-            document.cookie = name + "=" + encodeURIComponent(value) + expires + "; path=/";
+        function goToRegisterPage() {
+            window.location.href = 'register.html';
         }
 
-        // Event handler for the form submission
         document.getElementById("registerForm").onsubmit = function(event) {
-            event.preventDefault(); // Prevent the form from submitting normally
+            event.preventDefault();
             var username = document.getElementById("username").value;
             var password = document.getElementById("password").value;
-
-            // Set cookies for username and password
-            setCookie("username", username, 1); // Cookie expires in 1 day
-            setCookie("password", password, 1); // Cookie expires in 1 day
-
-            alert("Account created! Cookies set.");
-            window.location.href = 'login.html'; // Redirect to the login page
+            alert("Account created!");
+            window.location.href = 'login.html';
         };
 
-        // Function to navigate to the login page
         function goToLoginPage() {
-            window.location.href = 'login.html'; // Redirect to the login page
+            window.location.href = 'login.html';
         }
     </script>
 
