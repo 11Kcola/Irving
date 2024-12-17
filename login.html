@@ -163,6 +163,29 @@
     </footer>
 
     <script>
+        document.getElementById("loginForm").onsubmit = function(event) {
+            event.preventDefault();
+            var username = document.getElementById("username").value;
+            var password = document.getElementById("password").value;
+
+            var storedUsername = getCookie("username");
+            var storedPassword = getCookie("password");
+
+            if (username === storedUsername && password === storedPassword) {
+                alert("Login successful!");
+                window.location.href = 'gwc.html'; // 重定向到 gwc.html
+            } else {
+                alert("Login failed. Please check your username and password.");
+                clearCookie("username"); // 清除 cookie 以防万一
+                clearCookie("password"); // 清除 cookie 以防万一
+            }
+        };
+
+        // Function to clear a cookie
+        function clearCookie(name) {
+            setCookie(name, "", -1);
+        }
+
         // Function to set a cookie
         function setCookie(name, value, days) {
             var expires = "";
@@ -185,32 +208,6 @@
             }
             return null;
         }
-
-        // Function to clear a cookie
-        function clearCookie(name) {
-            setCookie(name, "", -1);
-        }
-
-        document.getElementById("loginForm").onsubmit = function(event) {
-            event.preventDefault();
-            var username = document.getElementById("username").value;
-            var password = document.getElementById("password").value;
-
-            // Here you can set your own username and password
-            var storedUsername = "your_custom_username"; // Replace with your own username
-            var storedPassword = "your_custom_password"; // Replace with your own password
-
-            if (username === storedUsername && password === storedPassword) {
-                alert("Login successful!");
-                setCookie("username", username, 7); // Set cookie with a 7-day expiration
-                setCookie("password", password, 7); // Set cookie with a 7-day expiration
-                window.location.href = 'gwc.html'; // Redirect to gwc.html upon successful login
-            } else {
-                alert("Login failed. Please check your username and password.");
-                clearCookie("username"); // Clear cookie upon failed login
-                clearCookie("password"); // Clear cookie upon failed login
-            }
-        };
     </script>
 
 </body>
