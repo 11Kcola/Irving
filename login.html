@@ -144,7 +144,6 @@
 
     <div class="content">
         <h1>Login</h1>
-
         <form id="loginForm">
             <label for="username">Username:</label>
             <input type="text" id="username" placeholder="Enter username" required>
@@ -164,20 +163,52 @@
     </footer>
 
     <script>
-        function goToRegisterPage() {
-            window.location.href = 'register.html';
+        // Function to set a cookie
+        function setCookie(name, value, days) {
+            var expires = "";
+            if (days) {
+                var date = new Date();
+                date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+                expires = "; expires=" + date.toUTCString();
+            }
+            document.cookie = name + "=" + (value || "") + expires + "; path=/";
+        }
+
+        // Function to get a cookie
+        function getCookie(name) {
+            var nameEQ = name + "=";
+            var ca = document.cookie.split(';');
+            for(var i = 0; i < ca.length; i++) {
+                var c = ca[i];
+                while (c.charAt(0) === ' ') c = c.substring(1, c.length);
+                if (c.indexOf(nameEQ) === 0) return c.substring(nameEQ.length, c.length);
+            }
+            return null;
+        }
+
+        // Function to clear a cookie
+        function clearCookie(name) {
+            setCookie(name, "", -1);
         }
 
         document.getElementById("loginForm").onsubmit = function(event) {
             event.preventDefault();
             var username = document.getElementById("username").value;
             var password = document.getElementById("password").value;
-            // Placeholder for actual authentication logic
-            if (username === "admin" && password === "admin") {
+
+            // Here you can set your own username and password
+            var storedUsername = "your_custom_username"; // Replace with your own username
+            var storedPassword = "your_custom_password"; // Replace with your own password
+
+            if (username === storedUsername && password === storedPassword) {
                 alert("Login successful!");
-                window.location.href = 'gwc.html';
+                setCookie("username", username, 7); // Set cookie with a 7-day expiration
+                setCookie("password", password, 7); // Set cookie with a 7-day expiration
+                window.location.href = 'gwc.html'; // Redirect to gwc.html upon successful login
             } else {
                 alert("Login failed. Please check your username and password.");
+                clearCookie("username"); // Clear cookie upon failed login
+                clearCookie("password"); // Clear cookie upon failed login
             }
         };
     </script>
