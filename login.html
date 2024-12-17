@@ -172,9 +172,8 @@
             event.preventDefault();
             var username = document.getElementById("username").value;
             var password = document.getElementById("password").value;
-            var storedUsername = getCookie('username');
-            var storedPassword = getCookie('password');
-            if (username === storedUsername && password === storedPassword) {
+            // Placeholder for actual authentication logic
+            if (username === "admin" && password === "admin") {
                 alert("Login successful!");
                 window.location.href = 'gwc.html';
             } else {
